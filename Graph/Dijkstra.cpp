@@ -9,12 +9,12 @@ pq.push(make_pair(0, S));
 while(pq.size()) {
 	pair <int, int> top = pq.top();
 	pq.pop();
-	if(top.fr > d[top.se]) continue;
+	if(-top.fr > d[top.se]) continue;
 	for(int i=0; i<g[top.se].size(); i++) {
 		if(d[top.se] + g[top.se][i].se < d[g[top.se][i].fr]) {
 			d[g[top.se][i].fr] = d[top.se] + g[top.se][i].se;
 			par[g[top.se][i].fr] = top.se;
-			pq.push(make_pair(d[g[top.se][i].fr], g[top.se][i].fr));
+			pq.push(make_pair(-d[g[top.se][i].fr], g[top.se][i].fr));
 		}
 	}
 }
